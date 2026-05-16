@@ -109,12 +109,12 @@ Required regions:
 
 #### `airports.json`
 
-Each airport or seaplane base must have a stable ID that does not change when the display name changes.
+Each airport or seaplane base must have a stable numeric ID that does not change when the display name, FAA ID, or other metadata changes.
 
 ```json
 [
   {
-    "id": "easton-esw",
+    "id": 1001,
     "faaId": "ESW",
     "name": "Easton",
     "displayName": "Easton (ESW)",
@@ -172,6 +172,8 @@ Valid `status` values:
 
 Important rule: do not delete airports from the dataset when they leave the program. Mark them as `retired` with `effectiveTo` so historical user progress can still be understood.
 
+Airport IDs are numeric because they are public dataset identifiers that should remain short, stable, and decoupled from mutable airport names or codes. User-generated records such as visits, rounds, photos, and sync records may still use UUID strings.
+
 #### `program-version.json`
 
 ```json
@@ -195,7 +197,7 @@ Use this for data updates that affect users.
     "changes": [
       {
         "type": "added",
-        "airportId": "easton-esw",
+        "airportId": 1001,
         "summary": "Added Easton (ESW)."
       }
     ]
@@ -212,7 +214,7 @@ User data should not be mixed into `/data`. It should live in browser storage fi
 ```json
 {
   "id": "uuid",
-  "airportId": "easton-esw",
+  "airportId": 1001,
   "roundId": "round-1",
   "visitedAt": "2026-05-15T18:30:00-07:00",
   "stampCollected": true,
