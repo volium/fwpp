@@ -1,0 +1,18 @@
+[
+  {
+    "version": "2026.05.01-dev",
+    "date": "2026-05-01",
+    "changes": [
+      {
+        "type": "added",
+        "airportId": 1001,
+        "summary": "Added Easton (ESW) from the initial project brief."
+      },
+      {
+        "type": "added",
+        "airportId": null,
+        "summary": "Added seed records for testing region and seaplane marker display."
+      }
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "version": "2026.05.01-dev",
+  "publishedAt": "2026-05-01",
+  "source": "Development seed dataset for FWPP Milestone 1",
+  "notes": "Replace seed airport records with verified Fly Washington Passport Program data."
+}

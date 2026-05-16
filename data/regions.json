@@ -1,0 +1,51 @@
+[
+  {
+    "id": "olympic",
+    "name": "Olympic Region",
+    "shortName": "Olympic",
+    "color": "#2563eb",
+    "sortOrder": 10
+  },
+  {
+    "id": "southwest",
+    "name": "Southwest Region",
+    "shortName": "Southwest",
+    "color": "#16a34a",
+    "sortOrder": 20
+  },
+  {
+    "id": "northwest",
+    "name": "Northwest Region",
+    "shortName": "Northwest",
+    "color": "#0891b2",
+    "sortOrder": 30
+  },
+  {
+    "id": "north-central",
+    "name": "North Central Region",
+    "shortName": "North Central",
+    "color": "#9333ea",
+    "sortOrder": 40
+  },
+  {
+    "id": "south-central",
+    "name": "South Central Region",
+    "shortName": "South Central",
+    "color": "#ea580c",
+    "sortOrder": 50
+  },
+  {
+    "id": "eastern",
+    "name": "Eastern Region",
+    "shortName": "Eastern",
+    "color": "#dc2626",
+    "sortOrder": 60
+  },
+  {
+    "id": "seaplane-bases",
+    "name": "Seaplane Bases",
+    "shortName": "Seaplanes",
+    "color": "#0d9488",
+    "sortOrder": 70
+  }
+]
