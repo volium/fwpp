@@ -35,6 +35,24 @@ Airport and region reference data lives in `/data`.
 
 Airport IDs are stable numbers. Airport names, FAA IDs, stamp locations, notes, and status may change over time without changing the airport ID.
 
+## Import Airports From CSV
+
+The official Google Maps export CSV files can be converted into the combined app dataset with:
+
+```sh
+python3 scripts/import_airports.py
+```
+
+The importer writes `/data/airports.json`, uses the CSV `Airport` field as `displayName`, preserves the CSV address as `address`, and assigns IDs by region:
+
+- Northwest Region: `10xx`
+- Olympic Region: `20xx`
+- Southwest Region: `30xx`
+- Eastern Region: `40xx`
+- North Central: `50xx`
+- South Central: `60xx`
+- Seaplane Bases: `70xx`
+
 ## Milestone 1 Status
 
 This foundation includes:
@@ -47,4 +65,3 @@ This foundation includes:
 - Airport detail panel.
 - Region filtering and search.
 - Light and dark themes.
-
