@@ -2007,12 +2007,21 @@
     "address": "2890 Older Lane Bellingham WA 98229",
     "latitude": 48.7356111,
     "longitude": -122.3400278,
-    "stampLocation": "The mailbox is located on the hangar next to the office door that says “Floathaven Seaplane Base”",
+    "stampLocation": "The mailbox is located on the hangar next to the office door that says \"Floathaven Seaplane Base\"",
     "status": "active",
     "effectiveFrom": "2026-05-16",
     "effectiveTo": null,
-    "aliases": [],
-    "links": [],
+    "aliases": ["Floathaven Seaplane Base"],
+    "links": [
+      {
+        "label": "WSDOT Airport Page",
+        "url": "https://wsdot.wa.gov/travel/aviation/airports-list/floathaven-spb"
+      },
+      {
+        "label": "AirNav Page",
+        "url": "https://www.airnav.com/airport/0W7"
+      }
+    ],
     "notes": ""
   },
   {
@@ -2029,8 +2038,17 @@
     "status": "active",
     "effectiveFrom": "2026-05-16",
     "effectiveTo": null,
-    "aliases": [],
-    "links": [],
+    "aliases": ["Will Rogers/Wiley Post Memorial Seaplane Base"],
+    "links": [
+      {
+        "label": "WSDOT Airport Page",
+        "url": "https://wsdot.wa.gov/travel/aviation/airports-list/will-rogers-wiley-post-memorial-spbb"
+      },
+      {
+        "label": "AirNav Page",
+        "url": "https://www.airnav.com/airport/W36"
+      }
+    ],
     "notes": ""
   },
   {
@@ -2047,8 +2065,17 @@
     "status": "active",
     "effectiveFrom": "2026-05-16",
     "effectiveTo": null,
-    "aliases": [],
-    "links": [],
+    "aliases": ["Port of Poulsbo Marina Moorage Seaplane Base"],
+    "links": [
+      {
+        "label": "WSDOT Airport Page",
+        "url": "https://wsdot.wa.gov/travel/aviation/airports-list/port-poulsbo-marina-moorage-spb"
+      },
+      {
+        "label": "AirNav Page",
+        "url": "https://www.airnav.com/airport/83Q"
+      }
+    ],
     "notes": ""
   },
   {
@@ -2065,8 +2092,17 @@
     "status": "active",
     "effectiveFrom": "2026-05-16",
     "effectiveTo": null,
-    "aliases": [],
-    "links": [],
+    "aliases": ["Kenmore Air Harbor Seaplane Base"],
+    "links": [
+      {
+        "label": "WSDOT Airport Page",
+        "url": "https://wsdot.wa.gov/travel/aviation/airports-list/kenmore-air-harbor-inc-spb"
+      },
+      {
+        "label": "AirNav Page",
+        "url": "https://www.airnav.com/airport/S60"
+      }
+    ],
     "notes": ""
   }
 ]
