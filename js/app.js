@@ -109,6 +109,7 @@ function applyFilters() {
       airport.displayName,
       airport.name,
       airport.faaId,
+      airport.address,
       airport.status,
       airport.type,
       airport.stampLocation,

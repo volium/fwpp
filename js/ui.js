@@ -121,6 +121,9 @@ export function renderAirportDetail(container, airport, region) {
   );
 
   container.append(title, meta);
+  if (airport.address) {
+    container.append(detailBlock("Address", airport.address));
+  }
   container.append(detailBlock("Stamp Location", airport.stampLocation || "Not yet documented."));
 
   if (airport.notes) {

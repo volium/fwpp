@@ -120,6 +120,7 @@ Each airport or seaplane base must have a stable numeric ID that does not change
     "displayName": "Easton (ESW)",
     "type": "airport",
     "regionId": "south-central",
+    "address": "",
     "latitude": 47.2541839,
     "longitude": -121.1855317,
     "stampLocation": "Stamp is located inside a blue lock box mounted on the visitor information sign. The lock combo is the airport CTAF.",
@@ -155,6 +156,7 @@ Optional fields:
 
 - `faaId`
 - `aliases`
+- `address`
 - `links`
 - `notes`
 - `effectiveTo`
