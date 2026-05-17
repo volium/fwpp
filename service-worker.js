@@ -1,4 +1,4 @@
-const CACHE_NAME = "fwpp-milestone-1-v1";
+const CACHE_NAME = "fwpp-milestone-1-v2";
 const APP_ASSETS = [
   "./",
   "index.html",

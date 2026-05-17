@@ -1,6 +1,6 @@
 {
-  "version": "2026.05.01-dev",
-  "publishedAt": "2026-05-01",
-  "source": "Development seed dataset for FWPP Milestone 1",
-  "notes": "Replace seed airport records with verified Fly Washington Passport Program data."
+  "version": "2026.05.16-csv-import",
+  "publishedAt": "2026-05-16",
+  "source": "Fly Washington Passport Program Google Maps CSV export",
+  "notes": "Imported official CSV export files into the FWPP static airport dataset."
 }
