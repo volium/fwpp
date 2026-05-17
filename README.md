@@ -61,7 +61,9 @@ This foundation includes:
 - Web app manifest.
 - Service worker app/data caching.
 - Offline-ready airport metadata after first successful load.
-- Region-colored map markers.
+- Real zoomable map tiles with region-colored airport markers.
 - Airport detail panel.
 - Region filtering and search.
 - Light and dark themes.
+
+The current map uses Leaflet with CARTO light/dark raster tiles. Airport data remains local/offline-ready; full offline tile packs are a later milestone.

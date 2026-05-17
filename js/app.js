@@ -1,12 +1,16 @@
 import { loadProgramData } from "./data-loader.js";
+import {
+  initializeAirportMap,
+  selectAirportMarker,
+  setMapTheme,
+  updateAirportMapVisibility
+} from "./map.js";
 import { getStoredTheme, setStoredTheme } from "./storage.js";
 import {
   renderAirportDetail,
   renderAirportList,
   renderLoadError,
-  renderMarkers,
   renderRegions,
-  updateMarkerVisibility
 } from "./ui.js";
 
 const elements = {
@@ -14,8 +18,8 @@ const elements = {
   airportList: document.querySelector("#airport-list"),
   airportSearch: document.querySelector("#airport-search"),
   datasetVersion: document.querySelector("#dataset-version"),
+  map: document.querySelector("#airport-map"),
   mapSummary: document.querySelector("#map-summary"),
-  markerLayer: document.querySelector("#marker-layer"),
   networkStatus: document.querySelector("#network-status"),
   regionFilter: document.querySelector("#region-filter"),
   resultCount: document.querySelector("#result-count"),
@@ -49,11 +53,16 @@ async function initializeApp() {
 
     elements.datasetVersion.textContent = data.version.version;
 
-    renderMarkers(elements.markerLayer, state.airports, state.regionById, state.selectedAirportId, selectAirport);
+    try {
+      initializeAirportMap(elements.map, state.airports, state.regionById, selectAirport);
+    } catch (mapError) {
+      showMapError(mapError);
+    }
+
     renderRegions(elements.regionFilter, state.regions, state.activeRegionId, setRegionFilter);
 
     if (state.airports.length > 0) {
-      selectAirport(state.airports[0].id, { preserveList: true });
+      selectAirport(state.airports[0].id, { preserveList: true, pan: false });
     }
 
     applyFilters();
@@ -63,6 +72,14 @@ async function initializeApp() {
     elements.datasetVersion.textContent = "Unavailable";
     elements.mapSummary.textContent = "Dataset failed to load";
   }
+}
+
+function showMapError(error) {
+  elements.map.replaceChildren();
+  const message = document.createElement("p");
+  message.className = "load-error map-error";
+  message.textContent = error.message;
+  elements.map.append(message);
 }
 
 function attachEvents() {
@@ -90,11 +107,7 @@ function selectAirport(airportId, options = {}) {
   const region = airport ? state.regionById.get(airport.regionId) : null;
   renderAirportDetail(elements.airportDetail, airport, region);
 
-  updateMarkerVisibility(
-    elements.markerLayer,
-    new Set(state.filteredAirports.map((item) => item.id)),
-    state.selectedAirportId
-  );
+  selectAirportMarker(state.selectedAirportId, { pan: options.pan !== false });
 
   if (!options.preserveList) {
     renderAirportList(elements.airportList, state.filteredAirports, state.regionById, state.selectedAirportId, selectAirport);
@@ -132,7 +145,7 @@ function applyFilters() {
     );
   }
 
-  updateMarkerVisibility(elements.markerLayer, visibleAirportIds, state.selectedAirportId);
+  updateAirportMapVisibility(visibleAirportIds, state.selectedAirportId);
   renderAirportList(elements.airportList, state.filteredAirports, state.regionById, state.selectedAirportId, selectAirport);
   elements.resultCount.textContent = `${state.filteredAirports.length} shown`;
   elements.mapSummary.textContent = `${state.airports.length} airports · ${state.regions.length} regions`;
@@ -147,6 +160,7 @@ function initializeTheme() {
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   elements.themeToggle.setAttribute("aria-label", `Switch to ${theme === "dark" ? "light" : "dark"} theme`);
+  setMapTheme(theme);
 }
 
 function initializeNetworkStatus() {

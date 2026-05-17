@@ -1,4 +1,4 @@
-import { formatCoordinates, projectAirport } from "./map.js";
+import { formatCoordinates } from "./map.js";
 
 export function renderRegions(container, regions, activeRegionId, onSelect) {
   container.replaceChildren();
@@ -19,38 +19,6 @@ export function renderRegions(container, regions, activeRegionId, onSelect) {
     button.textContent = region.shortName;
     button.addEventListener("click", () => onSelect(region.id));
     container.append(button);
-  }
-}
-
-export function renderMarkers(container, airports, regionById, selectedAirportId, onSelect) {
-  container.replaceChildren();
-
-  for (const airport of airports) {
-    const region = regionById.get(airport.regionId);
-    const position = projectAirport(airport);
-    const marker = document.createElement("button");
-    marker.type = "button";
-    marker.className = [
-      "marker",
-      airport.type === "seaplane_base" ? "seaplane" : "",
-      selectedAirportId === airport.id ? "is-selected" : ""
-    ].filter(Boolean).join(" ");
-    marker.style.left = `${position.x}%`;
-    marker.style.top = `${position.y}%`;
-    marker.style.setProperty("--region-color", region?.color ?? "var(--accent)");
-    marker.setAttribute("aria-label", `${airport.displayName}, ${region?.name ?? "Unknown region"}`);
-    marker.title = airport.displayName;
-    marker.dataset.airportId = String(airport.id);
-    marker.addEventListener("click", () => onSelect(airport.id));
-    container.append(marker);
-  }
-}
-
-export function updateMarkerVisibility(container, visibleAirportIds, selectedAirportId) {
-  for (const marker of container.querySelectorAll(".marker")) {
-    const airportId = Number(marker.dataset.airportId);
-    marker.classList.toggle("is-hidden", !visibleAirportIds.has(airportId));
-    marker.classList.toggle("is-selected", selectedAirportId === airportId);
   }
 }
 

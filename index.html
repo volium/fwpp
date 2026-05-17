@@ -9,6 +9,7 @@
     <link rel="manifest" href="manifest.webmanifest">
     <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="assets/icons/icon.svg">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
@@ -38,17 +39,7 @@
         </div>
 
         <div class="map-shell">
-          <div class="state-map" id="state-map">
-            <svg class="state-outline" viewBox="0 0 1000 620" role="img" aria-labelledby="map-title map-desc">
-              <title id="map-title">Simplified map of Washington State</title>
-              <desc id="map-desc">Airport markers are positioned by latitude and longitude.</desc>
-              <path class="state-fill" d="M86 90 L918 88 L938 354 L888 383 L879 431 L823 454 L808 508 L742 520 L716 568 L621 546 L548 570 L462 544 L381 566 L325 530 L230 542 L191 497 L139 481 L145 416 L106 378 L127 318 L90 268 Z"></path>
-              <path class="coast-line" d="M86 90 L90 268 L127 318 L106 378 L145 416 L139 481 L191 497 L230 542"></path>
-              <path class="cascade-line" d="M542 114 C523 176 559 223 534 283 C508 346 553 393 535 463 C526 498 538 532 548 570"></path>
-              <path class="water-line" d="M206 123 C179 171 188 223 221 252 C246 276 240 314 204 347 C176 374 185 425 222 451"></path>
-            </svg>
-            <div class="marker-layer" id="marker-layer" aria-label="Airport markers"></div>
-          </div>
+          <div class="leaflet-map" id="airport-map" aria-label="Zoomable airport map"></div>
         </div>
       </section>
 
@@ -92,6 +83,7 @@
       <span>Not for flight safety decisions.</span>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="js/app.js"></script>
   </body>
 </html>

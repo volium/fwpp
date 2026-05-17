@@ -1,4 +1,5 @@
-const CACHE_NAME = "fwpp-milestone-1-v2";
+const CACHE_NAME = "fwpp-milestone-1-v3";
+const RUNTIME_CACHE_NAME = "fwpp-runtime-map-v1";
 const APP_ASSETS = [
   "./",
   "index.html",
@@ -29,7 +30,7 @@ self.addEventListener("activate", (event) => {
     caches.keys()
       .then((keys) => Promise.all(
         keys
-          .filter((key) => key !== CACHE_NAME)
+          .filter((key) => ![CACHE_NAME, RUNTIME_CACHE_NAME].includes(key))
           .map((key) => caches.delete(key))
       ))
       .then(() => self.clients.claim())
@@ -42,6 +43,11 @@ self.addEventListener("fetch", (event) => {
   }
 
   const requestUrl = new URL(event.request.url);
+  if (requestUrl.hostname === "unpkg.com" || requestUrl.hostname.endsWith("basemaps.cartocdn.com")) {
+    event.respondWith(cacheFirst(event.request, RUNTIME_CACHE_NAME));
+    return;
+  }
+
   if (requestUrl.origin !== self.location.origin) {
     return;
   }
@@ -54,14 +60,14 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(cacheFirst(event.request));
 });
 
-async function cacheFirst(request) {
+async function cacheFirst(request, cacheName = CACHE_NAME) {
   const cached = await caches.match(request);
   if (cached) {
     return cached;
   }
 
   const response = await fetch(request);
-  const cache = await caches.open(CACHE_NAME);
+  const cache = await caches.open(cacheName);
   cache.put(request, response.clone());
   return response;
 }

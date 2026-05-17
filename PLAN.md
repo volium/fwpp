@@ -291,7 +291,7 @@ For Milestone 1, prefer a simple implementation that works locally and degrades 
 Acceptable options:
 
 - Online raster/vector basemap with cached app data, plus clear offline fallback.
-- Static Washington outline or simplified canvas/SVG background with airport markers.
+- Leaflet or MapLibre with real online raster/vector tiles, plus a clear offline metadata fallback.
 - MapLibre GL JS with online tiles initially, then offline tile support later.
 
 Do not block Milestone 1 on perfect offline basemap tiles. The airport coordinates and metadata are the essential offline data.

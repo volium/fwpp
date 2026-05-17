@@ -166,7 +166,7 @@ a {
 .region-button:focus-visible,
 .airport-card:hover,
 .airport-card:focus-visible,
-.marker:focus-visible {
+.airport-map-marker:focus-visible {
   outline: 3px solid color-mix(in srgb, var(--focus) 70%, transparent);
   outline-offset: 2px;
 }
@@ -208,55 +208,37 @@ a {
   min-height: min(72vh, 48rem);
   border: 1px solid var(--border);
   border-radius: 0.75rem;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--surface-soft) 80%, transparent), transparent),
-    var(--surface);
+  background: var(--surface);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
 
-.state-map {
+.leaflet-map {
   position: relative;
   width: 100%;
   height: 100%;
   min-height: min(72vh, 48rem);
-  isolation: isolate;
 }
 
-.state-outline {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+.leaflet-container {
+  background: var(--surface-soft);
+  color: var(--text);
+  font: inherit;
 }
 
-.state-fill {
-  fill: var(--map-land);
-  stroke: var(--map-line);
-  stroke-width: 3;
+.leaflet-control-zoom a {
+  color: #0f172a;
 }
 
-.coast-line,
-.cascade-line,
-.water-line {
-  fill: none;
-  stroke: var(--map-line);
-  stroke-linecap: round;
-  stroke-width: 2;
-  opacity: 0.56;
+.leaflet-control-attribution {
+  color: #334155;
 }
 
-.water-line {
-  opacity: 0.34;
+.leaflet-control-attribution a {
+  color: #1d4ed8;
 }
 
-.marker-layer {
-  position: absolute;
-  inset: 0;
-}
-
-.marker {
-  position: absolute;
+.airport-map-marker {
   display: grid;
   width: 1.35rem;
   height: 1.35rem;
@@ -266,35 +248,30 @@ a {
   background: var(--region-color, var(--accent));
   box-shadow: 0 8px 18px rgba(15, 23, 42, 0.28);
   color: #fff;
-  transform: translate(-50%, -50%);
 }
 
-.marker::after {
+.airport-map-marker span {
   content: "";
+  display: block;
   width: 0.38rem;
   height: 0.38rem;
   border-radius: 999px;
   background: currentColor;
 }
 
-.marker.seaplane {
+.airport-map-marker.seaplane {
   border-radius: 0.35rem;
-  transform: translate(-50%, -50%) rotate(45deg);
 }
 
-.marker.seaplane::after {
-  transform: rotate(-45deg);
+.airport-map-marker.seaplane span {
+  border-radius: 0.18rem;
 }
 
-.marker.is-selected {
+.airport-map-marker.is-selected {
   width: 1.7rem;
   height: 1.7rem;
   border-width: 3px;
   z-index: 3;
-}
-
-.marker.is-hidden {
-  display: none;
 }
 
 .side-panel {
@@ -423,6 +400,14 @@ a {
   padding: 0.75rem;
 }
 
+.map-error {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  top: 1rem;
+  z-index: 2;
+}
+
 .airport-list {
   display: grid;
   max-height: 38vh;
@@ -483,7 +468,7 @@ a {
   }
 
   .map-shell,
-  .state-map {
+  .leaflet-map {
     min-height: 56vh;
   }
 
